@@ -38,4 +38,3 @@ void ShooterManualWinch::End() {
 void ShooterManualWinch::Interrupted() {
 	Robot::shooter->shooterWinch->Set(0.0);
 }
-
