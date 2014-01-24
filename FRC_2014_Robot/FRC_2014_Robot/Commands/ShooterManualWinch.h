@@ -9,8 +9,8 @@
 // it from being updated in th future.
 
 
-#ifndef INTAKESWITCHROLLER_H
-#define INTAKESWITCHROLLER_H
+#ifndef SHOOTERMANUALWINCH_H
+#define SHOOTERMANUALWINCH_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class IntakeSwitchRoller: public Command {
+class ShooterManualWinch: public Command {
 public:
-	IntakeSwitchRoller();
+	ShooterManualWinch();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();

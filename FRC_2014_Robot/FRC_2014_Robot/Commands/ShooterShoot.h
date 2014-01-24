@@ -9,8 +9,8 @@
 // it from being updated in th future.
 
 
-#ifndef INTAKESWITCHSOLENOID_H
-#define INTAKESWITCHSOLENOID_H
+#ifndef SHOOTERSHOOT_H
+#define SHOOTERSHOOT_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class IntakeSwitchSolenoid: public Command {
+class ShooterShoot: public Command {
 public:
-	IntakeSwitchSolenoid();
+	ShooterShoot();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
