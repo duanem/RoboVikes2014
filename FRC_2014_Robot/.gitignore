@@ -1,6 +1,6 @@
 # Ingore generated data
 
-/PPC603gnu/
+PPC603gnu/
 
 # Tilde files are backups
 *~
