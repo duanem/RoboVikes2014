@@ -7,121 +7,45 @@ Children:
 - Name: Subsystems
   Base: Subsystems
   Children:
-  - Name: Chassis
+  - Name: SubCompressor
     Base: Subsystem
     Children:
-    - Name: RightBackJaguar
-      Base: CAN Jaguar
+    - Name: compressorCompressor
+      Base: Compressor
       Children: []
       Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id001 ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
-            '13', '14', '15', '16', '17', '18', '19', '20']
-          default: '2'
-          name: CAN ID
-          validators: &id002 [CANID]
-          value: '7'
-    - Name: LeftBackJaguar
-      Base: CAN Jaguar
-      Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '6'
-    - Name: RightMiddleJaguar
-      Base: CAN Jaguar
-      Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '5'
-    - Name: LeftMiddleJaguar
-      Base: CAN Jaguar
-      Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '4'
-    - Name: RightFrontJaguar
-      Base: CAN Jaguar
-      Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '3'
-    - Name: LeftFrontJaguar
-      Base: CAN Jaguar
-      Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '2'
-    Properties:
-      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: ChassisTankDrive}
-  - Name: Shifter
-    Base: Subsystem
-    Children:
-    - Name: Shifter
-      Base: Double Solenoid
-      Children: []
-      Properties:
-        Forward Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+        Spike Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
           choices: ['1', '2', '3', '4', '5', '6', '7', '8']
           default: '1'
-          name: Forward Channel (Solenoid)
-          validators: [Solenoid]
+          name: Spike Channel (Relay)
+          validators: [RelayOutput]
           value: '1'
-        Forward Module (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+        Spike Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
           choices: ['1', '2']
           default: '1'
-          name: Forward Module (Solenoid)
-          validators: [Solenoid]
+          name: Spike Module (Digital)
+          validators: [RelayOutput]
           value: '1'
-        Reverse Module (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
+        Pressure Switch Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
           choices: ['1', '2']
           default: '1'
-          name: Reverse Module (Solenoid)
-          validators: [Solenoid]
+          name: Pressure Switch Module (Digital)
+          validators: [DigitalChannel]
           value: '1'
-        Reverse Channel (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
-          choices: ['1', '2', '3', '4', '5', '6', '7', '8']
+        Pressure Switch Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
+            '13', '14']
           default: '1'
-          name: Reverse Channel (Solenoid)
-          validators: [Solenoid]
-          value: '2'
+          name: Pressure Switch Channel (Digital)
+          validators: [DigitalChannel]
+          value: '1'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
+        name: Default Command, type: Command, validators: null, value: Compress}
   Properties: {}
 - Name: Operator Interface
   Base: OI
-  Children:
-  - Name: Driver
-    Base: Joystick
-    Children: []
-    Properties:
-      Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: ['1', '2', '3', '4']
-        default: 1
-        name: Number
-        validators: [Joystick]
-        value: '1'
+  Children: []
   Properties: {}
 - Name: Commands
   Base: Commands
@@ -134,22 +58,14 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: ChassisTankDrive
+  - Name: Compress
     Base: Command
     Children: []
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Chassis}
+        name: Requires, type: Subsystem, validators: null, value: SubCompressor}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-  - Name: Shift
-    Base: Command
-    Children: []
-    Properties:
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Shifter}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
   Properties: {}
 Properties:
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,

@@ -30,6 +30,7 @@ public:
 	static CANJaguar* chassisRightJaguar1;
 	static CANJaguar* chassisRightJaguar2;
 	static CANJaguar* chassisRightJaguar3;
+	static DoubleSolenoid* shifterShifter;
 	
 	static TripleMotor* chassisLeftDrive;
 	static TripleMotor* chassisRightDrive;
