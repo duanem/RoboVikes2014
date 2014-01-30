@@ -9,8 +9,8 @@
 // it from being updated in th future.
 
 
-#ifndef INTAKESWITCHSOLENOID_H
-#define INTAKESWITCHSOLENOID_H
+#ifndef COMPRESS_H
+#define COMPRESS_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class IntakeSwitchSolenoid: public Command {
+class Compress: public Command {
 public:
-	IntakeSwitchSolenoid();
+	Compress();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
