@@ -40,6 +40,9 @@ public:
 	static TripleMotor* chassisLeftDrive;
 	static TripleMotor* chassisRightDrive;
 
+	static CANJaguar* intakeRoller;
+	static DoubleSolenoid* intakeSolenoid;
+
 	static void init();
 };
 #endif
