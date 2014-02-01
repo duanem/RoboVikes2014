@@ -22,7 +22,7 @@ void IntakeMaintain::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void IntakeMaintain::Execute() {
-	Robot::intake->intakeRoller->Set(Robot::intake->intakeRoller->Get());
+	Robot::intake->roller->Set(Robot::intake->roller->Get());
 }
 // Make this return true when this Command no longer needs to run execute()
 bool IntakeMaintain::IsFinished() {

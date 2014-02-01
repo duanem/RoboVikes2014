@@ -25,12 +25,12 @@ void IntakeSwitchRoller::Initialize() {
 void IntakeSwitchRoller::Execute() {
 	if(on)
 	{
-		Robot::intake->intakeRoller->Set(0.0);
+		Robot::intake->roller->Set(0.0);
 		on = false;
 	}
 	else	
 	{
-		Robot::intake->intakeRoller->Set(0.8);
+		Robot::intake->roller->Set(0.8);
 		on = true;
 	}
 }

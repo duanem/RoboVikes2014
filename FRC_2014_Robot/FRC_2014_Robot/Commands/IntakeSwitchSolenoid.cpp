@@ -25,12 +25,12 @@ void IntakeSwitchSolenoid::Initialize() {
 void IntakeSwitchSolenoid::Execute() {
 	if(on)
 	{
-		Robot::intake->intakeSolenoid->Set(DoubleSolenoid::kReverse);
+		Robot::intake->solenoid->Set(DoubleSolenoid::kReverse);
 		on = false;
 	}
 	else
 	{
-		Robot::intake->intakeSolenoid->Set(DoubleSolenoid::kForward);
+		Robot::intake->solenoid->Set(DoubleSolenoid::kForward);
 		on = true;
 	}
 }
