@@ -21,7 +21,7 @@ void ShooterManualWinch::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void ShooterManualWinch::Execute() {
-	const double winchSpeed = 0.8;
+	const double winchSpeed = -0.8;
 	Robot::shooter->shooterWinch->Set(winchSpeed);
 }
 // Make this return true when this Command no longer needs to run execute()

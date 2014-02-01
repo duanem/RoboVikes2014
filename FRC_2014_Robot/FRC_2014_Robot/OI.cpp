@@ -21,8 +21,8 @@ OI::OI() {
 	
 	driverButtonY = new JoystickButton(driverJoystick, 4);
 	driverButtonY->WhileHeld(new ShooterManualWinch());
-	driverButtonX = new JoystickButton(driverJoystick, 3);
-	driverButtonX->WhenPressed(new ShooterShoot());
+	driverSelect = new JoystickButton(driverJoystick, 7);
+	driverSelect->WhenPressed(new ShooterShoot());
      
         // SmartDashboard Buttons
 	SmartDashboard::PutData("Autonomous Command", new AutonomousCommand());

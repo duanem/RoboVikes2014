@@ -26,21 +26,21 @@ void ShooterShoot::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterShoot::Execute() {
-	DoubleSolenoid::Value releaseValue = DoubleSolenoid::kForward;
-	Robot::shooter->shooterClutch->Set(releaseValue);
-	
+	if(Robot::shooter->shooterClutch->Get() == DoubleSolenoid::kForward)
+		Robot::shooter->shooterClutch->Set(DoubleSolenoid::kReverse);
+	else
+		Robot::shooter->shooterClutch->Set(DoubleSolenoid::kForward);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterShoot::IsFinished() {
-	return false;
+	return true;
 	//To Do: Do something smart here
 }
 
 // Called once after isFinished returns true
 void ShooterShoot::End() {
-	DoubleSolenoid::Value engageValue = DoubleSolenoid::kReverse;
-	Robot::shooter->shooterClutch->Set(engageValue);
+	
 }
 
 // Called when another command which requires one or more of the same
