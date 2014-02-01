@@ -9,8 +9,8 @@
 // it from being updated in th future.
 
 
-#ifndef INTAKESWITCHSOLENOID_H
-#define INTAKESWITCHSOLENOID_H
+#ifndef ARMPIVOTSWITCH_H
+#define ARMPIVOTSWITCH_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,9 +21,9 @@
  *
  * @author ExampleAuthor
  */
-class IntakeSwitchSolenoid: public Command {
+class ArmPivotSwitch: public Command {
 public:
-	IntakeSwitchSolenoid();
+	ArmPivotSwitch();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
