@@ -22,7 +22,7 @@ void TripleMotor::Set(float speed, UINT8 syncGroup = 0)
 {
 	mSpeedController1->Set(speed, syncGroup);
 	mSpeedController2->Set(speed, syncGroup);
-        mSpeedController3->Set(speed, syncGroup);
+       mSpeedController3->Set(speed, syncGroup);
 }
 
 float TripleMotor::Get()
