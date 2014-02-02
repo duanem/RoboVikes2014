@@ -1,5 +1,5 @@
 <head><version>2.59.0</version></head>
-<Axis_Internet_Camera disabled>
+<Axis_Internet_Camera>
   <auto_back_light>TRUE</auto_back_light>
   <auto_exposure>FALSE</auto_exposure>
   <auto_white_balance>TRUE</auto_white_balance>
@@ -18,21 +18,13 @@
 </Axis_Internet_Camera>
 <Color_Threshold>
   <blue_end>255</blue_end>
-  <blue_start>189</blue_start>
+  <blue_start>168</blue_start>
   <green_end>255</green_end>
-  <green_start>0</green_start>
-  <red_end>87</red_end>
+  <green_start>178</green_start>
+  <red_end>110</red_end>
   <red_start>0</red_start>
   <result_type>2</result_type>
 </Color_Threshold>
-<Adaptive_Threshold>
-  <channel_type>1</channel_type>
-  <filter_size>7</filter_size>
-  <max_threshold>255</max_threshold>
-  <mean_offset>5</mean_offset>
-  <min_threshold>0</min_threshold>
-  <result_type>2</result_type>
-</Adaptive_Threshold>
 <Blob_Replace>
   <color_index>3</color_index>
   <fill_shape>TRUE</fill_shape>
@@ -42,13 +34,21 @@
   <shape_index>15</shape_index>
   <thickness>1</thickness>
 </Blob_Replace>
+<Adaptive_Threshold>
+  <channel_type>1</channel_type>
+  <filter_size>7</filter_size>
+  <max_threshold>255</max_threshold>
+  <mean_offset>5</mean_offset>
+  <min_threshold>0</min_threshold>
+  <result_type>2</result_type>
+</Adaptive_Threshold>
 <Blob_Separate disabled/>
 <Blob_Filter>
   <create_blob_array_variable>FALSE</create_blob_array_variable>
   <filters>
     <tab>
       <filter>
-        <count_threshold>0</count_threshold>
+        <count_threshold>2</count_threshold>
         <create_array>0</create_array>
         <filter_id>8</filter_id>
         <invert_count>0</invert_count>
@@ -86,18 +86,28 @@
 </Display_Rectangle>
 <VBScript_Program>
   <script>calculateDistance = GetStrVariable("CALCULATE_DISTANCE")
-list = GetArrayVariable("BFR_COORDINATES")
+list = GetArrayVariable("BFR_COORDINATES")
+' calibrated for an Axis camera
+imageHeight = GetVariable("IMAGE_HEIGHT")
+cameraFieldOfView = 32.8
+' specify the known height of the target (12 inches)
+targetHeight = 32.0
+targetPixelHeight = 0
+targetSamples = 0
+
 if isArray(list) then
-  if ubound(list) &gt; 0 then
-
-    targetPixelHeight = 0
-    targetSamples = 0
-
-    ' calibrated for an Axis camera
-    imageHeight = GetVariable("IMAGE_HEIGHT")
-    cameraFieldOfView = 36.0
-    ' specify the known height of the target (12 inches)
-    targetHeight = 32.0
+  if ubound(list) = 8 then
+    righty = list(1)
+    rightyy = list(7)
+    lefty = list(3)
+    leftyy = list(5)
+    targetPixelHeight = ((lefty - leftyy) + (righty - rightyy)) / 2
+    totalDistance = (((targetHeight*imageHeight)/targetPixelHeight)/2)/ _
+      tan(((cameraFieldOfView*3.14159)/180.0)/2.0)
+
+	end if
+
+	if ubound(list) &gt;= 15 then
 
     ' grab list of coordinates from blob_replace
     ' note the array is sorted by previous module in a specific order
@@ -112,7 +122,20 @@ if isArray(list) then
     ' where the right or left size may be a couple inches closer
     ' or further away from the camera
     targetPixelHeight = ((lefty - leftyy) + (righty - rightyy)) / 2
+
+		if targetPixelHeight &lt;=20 then 
+			righty = list(9)
+   		rightyy = list(13)
+    	lefty = list(11)
+    	leftyy = list(15)
+    	targetPixelHeight = ((lefty - leftyy) + (righty - rightyy)) / 2
+ 		end if
+    totalDistance = (((targetHeight*imageHeight)/targetPixelHeight)/2)/ _
+      tan(((cameraFieldOfView*3.14159)/180.0)/2.0)
 
+
+	end if
+	
     ' we can use a known distance to determine FOV if we don't know it
     ' measuredDistance = 10.0*12.0
     ' write "Calculated FOV " _
@@ -120,15 +143,11 @@ if isArray(list) then
      '  /measuredDistance)*2.0)*180.0)/3.14159) &amp; vbCRLF
 
     ' determine distance in inches d = Tft*FOVpixel/(2*Tpixel*tanT)
-    totalDistance = (((targetHeight*imageHeight)/targetPixelHeight)/2)/ _
-      tan(((cameraFieldOfView*3.14159)/180.0)/2.0)
 
     SetVariable "Distance", CInt(((totalDistance*100)/12)/100)
 
-SetVariable "targetPixelHeight", CInt(targetPixelHeight)
+		SetVariable "targetPixelHeight", CInt(targetPixelHeight)
 
-
-  end if
 end if
 </script>
   <source_mode>gui</source_mode>
