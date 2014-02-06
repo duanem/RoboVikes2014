@@ -28,18 +28,19 @@ TripleMotor* RobotMap::chassisLeftDrive = NULL;
 TripleMotor* RobotMap::chassisRightDrive = NULL;
 RobotDrive* RobotMap::chassisRobotDrive = NULL;
 void RobotMap::init() {
-	chassisLeftJaguar1 = new CANJaguar(2);
-	chassisLeftJaguar2 = new CANJaguar(3);
-	chassisLeftJaguar3 = new CANJaguar(4);
+	chassisRightJaguar1 = new CANJaguar(2);
+	chassisRightJaguar2 = new CANJaguar(3);
+	chassisRightJaguar3 = new CANJaguar(4);
 	
-	chassisRightJaguar1 = new CANJaguar(5);
-	chassisRightJaguar2 = new CANJaguar(6);
-	chassisRightJaguar3 = new CANJaguar(7);
+	chassisLeftJaguar1 = new CANJaguar(5);
+	chassisLeftJaguar2 = new CANJaguar(6);
+	chassisLeftJaguar3 = new CANJaguar(7);
+	
+	chassisRightDrive = new TripleMotor(chassisRightJaguar1,
+							chassisRightJaguar2,chassisRightJaguar3);
 	
 	chassisLeftDrive = new TripleMotor(chassisLeftJaguar1,
 							chassisLeftJaguar2,chassisLeftJaguar3);
-	chassisRightDrive = new TripleMotor(chassisRightJaguar1,
-							chassisRightJaguar2,chassisRightJaguar3);
 	chassisRobotDrive = new RobotDrive(chassisLeftDrive, chassisRightDrive);
 	
 	chassisRobotDrive->SetSafetyEnabled(true);

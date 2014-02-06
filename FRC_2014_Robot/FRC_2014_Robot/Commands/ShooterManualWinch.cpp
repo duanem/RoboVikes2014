@@ -21,8 +21,15 @@ void ShooterManualWinch::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void ShooterManualWinch::Execute() {
-	const double winchSpeed = -0.8;
-	Robot::shooter->shooterWinch->Set(winchSpeed);
+	double readValue = Robot::oi->getCoDriver()->GetRawAxis(2);
+	if(readValue > 0.1)
+	{
+		readValue *= -1;
+		
+		Robot::shooter->shooterWinch->Set(readValue);	
+	}
+	else
+		Robot::shooter->shooterWinch->Set(0);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterManualWinch::IsFinished() {

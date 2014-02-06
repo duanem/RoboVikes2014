@@ -59,6 +59,7 @@ void Robot::TeleopInit() {
 }
 	
 void Robot::TeleopPeriodic() {
+	SmartDashboard::PutNumber("ultrasonic", Robot::ultrasonicSystem->range);
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
 }

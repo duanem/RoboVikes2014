@@ -26,5 +26,6 @@ public:
 	RobotDrive* robotDrive;
 	Chassis();
 	void InitDefaultCommand();
+	bool mReversed;
 };
 #endif
