@@ -30,7 +30,7 @@ void IntakeSwitchRoller::Execute() {
 	}
 	else	
 	{
-		Robot::intake->roller->Set(0.8);
+		Robot::intake->roller->Set(1.0);
 		on = true;
 	}
 }
