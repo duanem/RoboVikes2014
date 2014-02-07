@@ -18,6 +18,7 @@ private:
 	JoystickButton* driverRStick;
 	JoystickButton* driverStart;
 	Joystick* coDriver;
+	JoystickButton* coDriverRStick;
 	JoystickButton* coDriverRBumper;
 	JoystickButton* coDriverButtonX;
 	JoystickButton* coDriverButtonA;
