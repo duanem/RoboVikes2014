@@ -23,13 +23,15 @@ void ShooterManualWinch::Initialize() {
 void ShooterManualWinch::Execute() {
 	double readValue = Robot::oi->getCoDriver()->GetRawAxis(2);
 	if(readValue > 0.1)
-	{
-		readValue *= -1;
-		
-		Robot::shooter->shooterWinch->Set(readValue);	
+	{		
+		Robot::shooter->shooterWinch1->Set(readValue);
+		Robot::shooter->shooterWinch2->Set(readValue);	
 	}
 	else
-		Robot::shooter->shooterWinch->Set(0);
+	{
+		Robot::shooter->shooterWinch1->Set(0);
+		Robot::shooter->shooterWinch2->Set(0);
+	}
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterManualWinch::IsFinished() {
@@ -37,11 +39,11 @@ bool ShooterManualWinch::IsFinished() {
 }
 // Called once after isFinished returns true
 void ShooterManualWinch::End() {
-	Robot::shooter->shooterWinch->Set(0.0);
-	
+	Robot::shooter->shooterWinch1->Set(0);
+	Robot::shooter->shooterWinch2->Set(0);	
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ShooterManualWinch::Interrupted() {
-	Robot::shooter->shooterWinch->Set(0.0);
-}
+	Robot::shooter->shooterWinch1->Set(0);
+	Robot::shooter->shooterWinch2->Set(0);}
