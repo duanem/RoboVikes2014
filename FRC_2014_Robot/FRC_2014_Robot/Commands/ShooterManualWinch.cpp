@@ -17,7 +17,7 @@ ShooterManualWinch::ShooterManualWinch() {
 }
 // Called just before this Command runs the first time
 void ShooterManualWinch::Initialize() {
-	
+	Robot::shooter->controller->Disable();
 }
 // Called repeatedly when this Command is scheduled to run
 void ShooterManualWinch::Execute() {
