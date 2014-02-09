@@ -19,7 +19,7 @@ setpoint(0){
 }
 // Called just before this Command runs the first time
 void ShooterWinchToSetpoint::Initialize() {
-	setpoint = 0;
+	setpoint = Robot::robotPref->GetDouble("ShooterSetpoint", 0);
 }
 // Called repeatedly when this Command is scheduled to run
 void ShooterWinchToSetpoint::Execute() {

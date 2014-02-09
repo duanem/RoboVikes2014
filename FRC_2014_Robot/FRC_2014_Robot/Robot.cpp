@@ -68,6 +68,8 @@ void Robot::TeleopPeriodic() {
 	SmartDashboard::PutNumber("GoalDistance", Robot::robotPref->GetDouble("GoalDistance", 0.0));
 	SmartDashboard::PutNumber("DriveSpeed", Robot::robotPref->GetDouble("DriveSpeed", 0.0));
 	SmartDashboard::PutNumber("DriveAngle", Robot::robotPref->GetDouble("DriveAngle", 0.0));
+	SmartDashboard::PutNumber("ShooterSetpoint", Robot::robotPref->GetDouble("ShooterSetpoint", 0.0));
+	SmartDashboard::PutNumber("ShooterP", Robot::robotPref->GetDouble("ShooterP", 0.0));
 	if (autonomousCommand != NULL)
 		Scheduler::GetInstance()->Run();
 }
