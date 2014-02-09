@@ -23,7 +23,7 @@ void IntakeSwitchRoller::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void IntakeSwitchRoller::Execute() {
-	double intakeValue = Robot::robotPref->GetDouble("IntakeValue", 0.0);
+	double intakeValue = Robot::robotPref->GetDouble("IntakeValue", 1.0);
 	if(on)
 	{
 		Robot::intake->roller->Set(0.0);

@@ -24,6 +24,7 @@ void ShooterManualWinch::Execute() {
 	double readValue = Robot::oi->getCoDriver()->GetRawAxis(2);
 	if(readValue > 0.1)
 	{		
+		readValue *= -1;
 		Robot::shooter->shooterWinch1->Set(readValue);
 		Robot::shooter->shooterWinch2->Set(readValue);	
 	}
