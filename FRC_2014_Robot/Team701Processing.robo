@@ -216,6 +216,7 @@ Distance
   <port>1735</port>
   <prefix>/SmartDashboard/</prefix>
   <variables_to_send>BLOB_COUNT
-Distance</variables_to_send>
+Distance
+HotStatus</variables_to_send>
   <variable_type_index>0</variable_type_index>
 </NetworkTables>
