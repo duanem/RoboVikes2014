@@ -11,6 +11,7 @@
 #define ROBOTMAP_H
 #include "WPILib.h"
 #include "TripleMotor.h"
+#include "DoubleMotor.h"
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -41,6 +42,8 @@ public:
 	static TripleMotor* chassisLeftDrive;
 	static TripleMotor* chassisRightDrive;
 	static RobotDrive* chassisRobotDrive;
+	
+	static DoubleMotor* shootershooterWinch;
 	static void init();
 };
 #endif

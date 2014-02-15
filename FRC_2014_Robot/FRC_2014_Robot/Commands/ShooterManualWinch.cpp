@@ -25,13 +25,11 @@ void ShooterManualWinch::Execute() {
 	if(readValue > 0.1)
 	{		
 		readValue *= -1;
-		Robot::shooter->shooterWinch1->Set(readValue);
-		Robot::shooter->shooterWinch2->Set(readValue);	
+		Robot::shooter->shooterWinch->Set(readValue);
 	}
 	else
 	{
-		Robot::shooter->shooterWinch1->Set(0);
-		Robot::shooter->shooterWinch2->Set(0);
+		Robot::shooter->shooterWinch->Set(0.0);
 	}
 }
 // Make this return true when this Command no longer needs to run execute()
@@ -40,11 +38,10 @@ bool ShooterManualWinch::IsFinished() {
 }
 // Called once after isFinished returns true
 void ShooterManualWinch::End() {
-	Robot::shooter->shooterWinch1->Set(0);
-	Robot::shooter->shooterWinch2->Set(0);	
+	Robot::shooter->shooterWinch->Set(0.0);
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ShooterManualWinch::Interrupted() {
-	Robot::shooter->shooterWinch1->Set(0);
-	Robot::shooter->shooterWinch2->Set(0);}
+	Robot::shooter->shooterWinch->Set(0.0);
+}
