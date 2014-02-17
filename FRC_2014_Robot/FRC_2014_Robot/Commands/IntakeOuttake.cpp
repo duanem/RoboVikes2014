@@ -25,19 +25,12 @@ void IntakeOuttake::Initialize() {
 void IntakeOuttake::Execute() {
 	
 	double outtakeValue = -1.0;
-	if(on)
-	{
-		Robot::intake->roller->Set(0.0);
-		on = false;
-	}
-	else	
-	{
-		Robot::intake->roller->Set(outtakeValue);
-		on = true;
-	}}
+
+	Robot::intake->roller->Set(outtakeValue);
+}
 // Make this return true when this Command no longer needs to run execute()
 bool IntakeOuttake::IsFinished() {
-	return true;
+	return false;
 }
 // Called once after isFinished returns true
 void IntakeOuttake::End() {
@@ -46,5 +39,5 @@ void IntakeOuttake::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void IntakeOuttake::Interrupted() {
-	
+	Robot::intake->roller->Set(0.0);
 }

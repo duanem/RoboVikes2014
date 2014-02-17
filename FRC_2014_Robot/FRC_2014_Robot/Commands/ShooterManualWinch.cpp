@@ -17,10 +17,17 @@ ShooterManualWinch::ShooterManualWinch() {
 }
 // Called just before this Command runs the first time
 void ShooterManualWinch::Initialize() {
-	Robot::shooter->controller->Disable();
+	Robot::shooter->pIDController1->Disable();
+	Robot::shooter->ultrasonic->SetAutomaticMode(true);
+
 }
 // Called repeatedly when this Command is scheduled to run
 void ShooterManualWinch::Execute() {
+	double sample = Robot::shooter->ultrasonic->GetRangeInches();
+	if(sample < 50.0)
+	{
+		Robot::shooter->rangeSample = sample;	
+	}
 	double readValue = Robot::oi->getCoDriver()->GetRawAxis(2);
 	if(readValue > 0.1)
 	{		
