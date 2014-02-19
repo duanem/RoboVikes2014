@@ -10,13 +10,13 @@
 
 
 
-#include "OneBallAuto.h"
+#include "AutoOneBall.h"
 #include "AutoDrive.h"
 #include "ArmPivotSwitch.h"
 #include "ShooterShoot.h"
 #include "IntakeSwitchSolenoid.h"
 
-OneBallAuto::OneBallAuto() {
+AutoOneBall::AutoOneBall() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -27,8 +27,7 @@ OneBallAuto::OneBallAuto() {
 	// these will run in order.
 
 	// To run multiple commands at the same time,
-	// use AddParallel()
-	// e.g. AddParallel(new Command1());
+	// use AddParallel(	// e.g. AddParallel(new Command1());
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
 

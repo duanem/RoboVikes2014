@@ -9,6 +9,7 @@
 // it from being updated in th future.
 #include "IntakeMaintain.h"
 IntakeMaintain::IntakeMaintain()
+:rollerValue(0.0)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -18,11 +19,11 @@ IntakeMaintain::IntakeMaintain()
 }
 // Called just before this Command runs the first time
 void IntakeMaintain::Initialize() {
-	
+	rollerValue = Robot::intake->roller->Get();
 }
 // Called repeatedly when this Command is scheduled to run
 void IntakeMaintain::Execute() {
-	Robot::intake->roller->Set(Robot::intake->roller->Get());
+	Robot::intake->roller->Set(rollerValue);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool IntakeMaintain::IsFinished() {

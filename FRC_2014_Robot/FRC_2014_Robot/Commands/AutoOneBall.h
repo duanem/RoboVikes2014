@@ -10,8 +10,8 @@
 
 
 
-#ifndef ONEBALLAUTO_H
-#define ONEBALLAUTO_H
+#ifndef AUTOONEBALL_H
+#define AUTOONEBALL_H
 
 #include "Commands/CommandGroup.h"
 
@@ -20,9 +20,9 @@
  *
  * @author ExampleAuthor
  */
-class OneBallAuto: public CommandGroup {
+class AutoOneBall: public CommandGroup {
 public:	
-	OneBallAuto();
+	AutoOneBall();
 };
 
 #endif
