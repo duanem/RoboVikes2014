@@ -72,18 +72,11 @@ void Robot::TeleopInit() {
 }
 	
 void Robot::TeleopPeriodic() {
-	SmartDashboard::PutBoolean("MagnetSwitch", Robot::shooter->magnetSwitch->Get());
 	SmartDashboard::PutNumber("rangeSample", Robot::shooter->rangeSample);
-	SmartDashboard::PutNumber("IntakeValue", Robot::robotPref->GetDouble("IntakeValue", 0.0));
 	SmartDashboard::PutNumber("GoalDistance", Robot::robotPref->GetDouble("GoalDistance", 0.0));
 	SmartDashboard::PutNumber("DriveSpeed", Robot::robotPref->GetDouble("DriveSpeed", 0.0));
 	SmartDashboard::PutNumber("DriveAngle", Robot::robotPref->GetDouble("DriveAngle", 0.0));
 	SmartDashboard::PutNumber("ShooterSetpoint", Robot::robotPref->GetDouble("ShooterSetpoint", 0.0));
-	SmartDashboard::PutNumber("ShooterP", Robot::robotPref->GetDouble("ShooterP", 0.0));
-	SmartDashboard::PutNumber("IntakePos",Robot::intake->solenoid->Get());
-	SmartDashboard::PutNumber("ShooterPos",Robot::arm->pivotSolenoid->Get());
-	SmartDashboard::PutNumber("ClutchPos", Robot::shooter->shooterClutch->Get());
-	SmartDashboard::PutNumber("ShiftPos",Robot::shifter->shifter->Get());
 	SmartDashboard::PutNumber("LeftEncoder", 
 							Robot::chassis->leftEncoder->GetDistance());
 	SmartDashboard::PutNumber("RightEncoder", 
