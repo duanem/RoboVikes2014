@@ -12,7 +12,7 @@ public:
 	SpeedController* GetSpeedController1();	
 	SpeedController* GetSpeedController2();
         SpeedController* GetSpeedController3();	
-	virtual void Set(float speed, UINT8 syncGroup);
+	virtual void Set(float speed, UINT8 syncGroup=0);
 	virtual float Get();
 	
 	virtual void Disable();

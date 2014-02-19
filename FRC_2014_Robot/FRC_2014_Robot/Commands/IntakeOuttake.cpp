@@ -9,6 +9,7 @@
 // it from being updated in th future.
 #include "IntakeOuttake.h"
 IntakeOuttake::IntakeOuttake()
+:on(false)
 {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -18,12 +19,12 @@ IntakeOuttake::IntakeOuttake()
 }
 // Called just before this Command runs the first time
 void IntakeOuttake::Initialize() {
-	
 }
 // Called repeatedly when this Command is scheduled to run
 void IntakeOuttake::Execute() {
-	
-	Robot::intake->roller->Set(-0.8);
+	Robot::intake->lights->Set(Relay::kOff);
+	double outtakeValue = -1.0;
+	Robot::intake->roller->Set(outtakeValue);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool IntakeOuttake::IsFinished() {

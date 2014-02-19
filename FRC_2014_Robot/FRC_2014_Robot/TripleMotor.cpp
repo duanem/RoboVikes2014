@@ -18,7 +18,7 @@ SpeedController* TripleMotor::GetSpeedController2()
 SpeedController* TripleMotor::GetSpeedController3()
 {return mSpeedController3;}
 
-void TripleMotor::Set(float speed, UINT8 syncGroup = 0)
+void TripleMotor::Set(float speed, UINT8 syncGroup)
 {
 	mSpeedController1->Set(speed, syncGroup);
 	mSpeedController2->Set(speed, syncGroup);

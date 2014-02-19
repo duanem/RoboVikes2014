@@ -17,19 +17,26 @@ ShooterManualWinch::ShooterManualWinch() {
 }
 // Called just before this Command runs the first time
 void ShooterManualWinch::Initialize() {
-	
+	Robot::shooter->pIDController1->Disable();
+	Robot::shooter->ultrasonic->SetAutomaticMode(true);
 }
 // Called repeatedly when this Command is scheduled to run
 void ShooterManualWinch::Execute() {
+	double sample = Robot::shooter->ultrasonic->GetRangeInches();
+	if(sample < 50.0)
+	{
+		Robot::shooter->rangeSample = sample;	
+	}
 	double readValue = Robot::oi->getCoDriver()->GetRawAxis(2);
 	if(readValue > 0.1)
-	{
+	{		
 		readValue *= -1;
-		
-		Robot::shooter->shooterWinch->Set(readValue);	
+		Robot::shooter->shooterWinch->Set(readValue);
 	}
 	else
-		Robot::shooter->shooterWinch->Set(0);
+	{
+		Robot::shooter->shooterWinch->Set(0.0);
+	}
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterManualWinch::IsFinished() {
@@ -38,7 +45,6 @@ bool ShooterManualWinch::IsFinished() {
 // Called once after isFinished returns true
 void ShooterManualWinch::End() {
 	Robot::shooter->shooterWinch->Set(0.0);
-	
 }
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
