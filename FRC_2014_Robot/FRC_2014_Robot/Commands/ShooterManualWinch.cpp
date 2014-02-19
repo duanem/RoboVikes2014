@@ -19,7 +19,6 @@ ShooterManualWinch::ShooterManualWinch() {
 void ShooterManualWinch::Initialize() {
 	Robot::shooter->pIDController1->Disable();
 	Robot::shooter->ultrasonic->SetAutomaticMode(true);
-
 }
 // Called repeatedly when this Command is scheduled to run
 void ShooterManualWinch::Execute() {

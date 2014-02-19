@@ -35,10 +35,6 @@ void ChassisTankDrive::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void ChassisTankDrive::Execute() {
-	SmartDashboard::PutNumber("LeftEncoder", 
-						Robot::chassis->leftEncoder->GetDistance());
-	SmartDashboard::PutNumber("RightEncoder", 
-							Robot::chassis->rightEncoder->GetDistance());
 	const int leftY = 2;
 	const int rightY = 5;
 	if(Robot::chassis->mReversed)

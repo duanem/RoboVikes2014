@@ -27,11 +27,13 @@ void IntakeSwitchRoller::Execute() {
 	if(on)
 	{
 		Robot::intake->roller->Set(0.0);
+		Robot::intake->lights->Set(Relay::kOff);
 		on = false;
 	}
 	else	
 	{
 		Robot::intake->roller->Set(intakeValue);
+		Robot::intake->lights->Set(Relay::kOn);
 		on = true;
 	}
 }
