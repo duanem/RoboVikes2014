@@ -23,17 +23,15 @@ void IntakeSwitchRoller::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void IntakeSwitchRoller::Execute() {
-	if(on)
+	if(Robot::intake->lights->Get() == Relay::kForward)
 	{
 		Robot::intake->roller->Set(0.0);
 		Robot::intake->lights->Set(Relay::kOff);
-		on = false;
 	}
 	else	
 	{
 		Robot::intake->roller->Set(1.0);
 		Robot::intake->lights->Set(Relay::kForward);
-		on = true;
 	}
 }
 // Make this return true when this Command no longer needs to run execute()

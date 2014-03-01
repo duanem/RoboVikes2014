@@ -22,6 +22,10 @@ AutoDrive::AutoDrive()
 void AutoDrive::Initialize() {
 	Robot::chassis->leftEncoder->Reset();
 	driveDistance = 0;
+	Robot::chassis->robotDrive
+					->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
+	Robot::chassis->robotDrive
+					->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 }
 // Called repeatedly when this Command is scheduled to run
 void AutoDrive::Execute() {
