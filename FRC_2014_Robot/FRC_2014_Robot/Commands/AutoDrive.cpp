@@ -26,6 +26,12 @@ void AutoDrive::Initialize() {
 					->SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
 	Robot::chassis->robotDrive
 					->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+	RobotMap::chassisRightJaguar1->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+	RobotMap::chassisRightJaguar2->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+	RobotMap::chassisRightJaguar3->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+	RobotMap::chassisLeftJaguar1->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+	RobotMap::chassisLeftJaguar2->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
+	RobotMap::chassisLeftJaguar3->ConfigNeutralMode(CANJaguar::kNeutralMode_Brake);
 }
 // Called repeatedly when this Command is scheduled to run
 void AutoDrive::Execute() {

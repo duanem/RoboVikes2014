@@ -9,28 +9,20 @@
 // it from being updated in th future.
 
 
-#ifndef SHOOTERSHOOT_H
-#define SHOOTERSHOOT_H
 
+#ifndef AutoTwoBall_H
+#define AutoTwoBall_H
 
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "Commands/CommandGroup.h"
 
 /**
  *
  *
  * @author ExampleAuthor
  */
-class ShooterShoot: public Command {
-public:
-	ShooterShoot();
-	virtual void Initialize();
-	virtual void Execute();
-	virtual bool IsFinished();
-	virtual void End();
-	virtual void Interrupted();
-	Timer t;
-
+class AutoTwoBall: public CommandGroup {
+public:	
+	AutoTwoBall();
 };
 
 #endif
