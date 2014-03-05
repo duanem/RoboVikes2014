@@ -10,24 +10,34 @@
 
 
 
-#include "AutoOneBall.h"
+#include "AutoTwoBall.h"
 #include "AutoDrive.h"
 #include "ArmPivotSwitch.h"
 #include "ShooterShoot.h"
 #include "IntakeSwitchSolenoid.h"
 #include "IntakeSwitchRoller.h"
+#include "ShooterWinchToSetpoint.h"
+#include "ShooterEngage.h"
 
-AutoOneBall::AutoOneBall() {
+AutoTwoBall::AutoTwoBall() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
+	AddSequential(new IntakeSwitchRoller());
+	AddSequential(new IntakeSwitchSolenoid());
+	AddSequential(new ArmPivotSwitch());
+	AddSequential(new IntakeSwitchRoller());
 	AddSequential(new AutoDrive());
+	AddSequential(new ShooterShoot());
+	AddSequential(new ShooterEngage());
+	AddSequential(new ShooterWinchToSetpoint());
+	AddSequential(new ArmPivotSwitch());
 	AddSequential(new IntakeSwitchRoller());
 	AddSequential(new IntakeSwitchSolenoid());
 	AddSequential(new ArmPivotSwitch());
 	AddSequential(new ShooterShoot());
 	AddSequential(new IntakeSwitchRoller());
- 
+
 	// these will run in order.
 
 	// To run multiple commands at the same time,

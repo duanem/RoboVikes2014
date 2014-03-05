@@ -21,15 +21,13 @@ void ShooterShoot::Initialize() {
 }
 // Called repeatedly when this Command is scheduled to run
 void ShooterShoot::Execute() {
-	if(Robot::shooter->shooterClutch->Get() == DoubleSolenoid::kForward)
-		Robot::shooter->shooterClutch->Set(DoubleSolenoid::kReverse);
-	else
-		Robot::shooter->shooterClutch->Set(DoubleSolenoid::kForward);
+	t.Reset();
+	t.Start();
+	Robot::shooter->shooterClutch->Set(DoubleSolenoid::kReverse);
 }
 // Make this return true when this Command no longer needs to run execute()
 bool ShooterShoot::IsFinished() {
-	return true;
-	//To Do: Do something smart here
+	return t.HasPeriodPassed(1.0);	//To Do: Do something smart here
 }
 // Called once after isFinished returns true
 void ShooterShoot::End() {
