@@ -45,7 +45,7 @@ bool ArmPivotSwitch::IsFinished()
 {
 	if(outward)
 	{
-		return t.HasPeriodPassed(3.0);
+		return t.HasPeriodPassed(2.0);
 	}
 	return true;
 }

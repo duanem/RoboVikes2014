@@ -21,7 +21,7 @@ AutoOneBall::AutoOneBall() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
-	AddSequential(new AutoDrive());
+	AddParallel(new AutoDrive());
 	AddSequential(new IntakeSwitchRoller());
 	AddSequential(new IntakeSwitchSolenoid());
 	AddSequential(new ArmPivotSwitch());
